@@ -1,3 +1,21 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+   "overrides": [
+    {
+      "files": ["**/*.test.ts?(x)", "jest.*.ts"],
+      "env": { "jest": true },
+      "extends": [
+        "plugin:jest/recommended",
+        "plugin:jest/style",
+        "plugin:jest-dom/recommended",
+        "plugin:testing-library/react",
+        "plugin:jest-formatting/recommended"
+      ],
+      "rules": {
+        // Allow to import devDependencies in test files.
+        "import/no-extraneous-dependencies": [2, { "devDependencies": true }]
+      }
+    }
+  ]
+
 }
