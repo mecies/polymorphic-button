@@ -1,6 +1,6 @@
 {
-  "extends": "next/core-web-vitals",
-   "overrides": [
+  "extends": ["next/core-web-vitals", "prettier", "plugin:prettier/recommended"],
+  "overrides": [
     {
       "files": ["**/*.test.ts?(x)", "jest.*.ts"],
       "env": { "jest": true },
@@ -17,5 +17,4 @@
       }
     }
   ]
-
 }
