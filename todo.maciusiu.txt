@@ -1,0 +1,10 @@
+konrado:
+- https://github.com/KonradSzwarc/next-playground/commit/67687fb0dc2592aff783cde915a4b03975b98cee#diff-6884918dc8291219be508e05e28965b958c734def85324f3b53858ea4702090f
+- https://github.com/KonradSzwarc/next-playground
+
+swc:
+- https://nextjs.org/docs/architecture/nextjs-compiler
+
+writing stories:
+- // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
+- // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
