@@ -1,4 +1,12 @@
 import type { Preview } from "@storybook/react";
+import { withThemeFromJSXProvider } from "@storybook/addon-styling";
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyles = createGlobalStyle`
+  body {
+    font-family: "Nunito Sans", Arial, sans-serif;
+  }
+`;
 
 const preview: Preview = {
   parameters: {
@@ -9,6 +17,11 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    decorators: [
+      withThemeFromJSXProvider({
+        GlobalStyles,
+      }),
+    ],
   },
 };
 
