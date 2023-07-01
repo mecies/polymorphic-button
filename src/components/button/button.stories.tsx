@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Plus, Forward } from "lucide-react";
 
-import Button from ".";
+import Button from "./button";
 import {
   OVERFLOWING_TEXT,
   PRIMARY_BUTTON_TEXT,
   SECONDARY_BUTTON_TEXT,
   LINK,
-} from "./mock-data";
+} from "./button.data";
 
 const ICONS = {
   Plus,

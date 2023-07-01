@@ -7,7 +7,7 @@ import {
   VARIANT_TO_ICON_PROPS_MAP,
   ICON_SIZE,
   TextWrapper,
-} from "./style";
+} from "./button.style";
 
 type Props = {
   variant?: Variant;

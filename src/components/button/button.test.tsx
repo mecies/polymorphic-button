@@ -3,9 +3,13 @@ import { composeStories } from "@storybook/react";
 import { render, screen } from "@testing-library/react";
 import { axe } from "jest-axe";
 
-import * as stories from "../index.stories";
-import { LINK, PRIMARY_BUTTON_TEXT, SECONDARY_BUTTON_TEXT } from "../mock-data";
-import Button from "..";
+import * as stories from "./button.stories";
+import {
+  LINK,
+  PRIMARY_BUTTON_TEXT,
+  SECONDARY_BUTTON_TEXT,
+} from "./button.data";
+import Button from "./button";
 
 const {
   Primary,
