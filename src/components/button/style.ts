@@ -108,6 +108,7 @@ export const Wrapper = styled.button<WrapperProps>`
   font-family: Nunito Sans;
   font-style: normal;
   font-weight: 700;
+  text-decoration: none;
 
   transition: background-color 0.1s ease, border-color 0.1s ease;
 

@@ -6,6 +6,7 @@ import {
   OVERFLOWING_TEXT,
   PRIMARY_BUTTON_TEXT,
   SECONDARY_BUTTON_TEXT,
+  LINK,
 } from "./mock-data";
 
 const ICONS = {
@@ -52,6 +53,11 @@ const meta: Meta<typeof Button> = {
       control: "radio",
       options: ["LEFT", "RIGHT"],
       description: "Controls the button's icon position.",
+    },
+    as: {
+      control: "radio",
+      options: ["button", "a"],
+      description: "Controls the button's underlying element.",
     },
   },
   tags: ["autodocs"],
@@ -124,5 +130,14 @@ export const Truncated: Story = {
     viewport: {
       defaultViewport: "mobile1",
     },
+  },
+};
+
+export const AsLink: Story = {
+  args: {
+    ...Primary.args,
+    as: "a",
+    href: LINK,
+    target: "_blank",
   },
 };

@@ -4,12 +4,28 @@ import { render, screen } from "@testing-library/react";
 import { axe } from "jest-axe";
 
 import * as stories from "../index.stories";
-import { PRIMARY_BUTTON_TEXT, SECONDARY_BUTTON_TEXT } from "../mock-data";
+import { LINK, PRIMARY_BUTTON_TEXT, SECONDARY_BUTTON_TEXT } from "../mock-data";
+import Button from "..";
 
-const { Primary, Secondary, Small, Disabled, WithIconLeft, WithIconRight } =
-  composeStories(stories);
+const {
+  Primary,
+  Secondary,
+  Small,
+  Disabled,
+  WithIconLeft,
+  WithIconRight,
+  AsLink,
+} = composeStories(stories);
 
 describe("Button", () => {
+  it("renders with a ref handle", () => {
+    const ref = createRef<HTMLButtonElement>();
+
+    render(<Button ref={ref} />);
+
+    expect(ref.current).toBeInstanceOf(HTMLButtonElement);
+  });
+
   it("renders correctly in primary variant", () => {
     render(<Primary />);
 
@@ -28,13 +44,13 @@ describe("Button", () => {
     expect(screen.getByText(PRIMARY_BUTTON_TEXT)).toBeInTheDocument();
   });
 
-  it("has no accessibility violations", async () => {
+  it("renders with no accessibility violations", async () => {
     const { container } = render(<Secondary />);
 
     expect(await axe(container)).toHaveNoViolations();
   });
 
-  it("is disabled", () => {
+  it("renders as disabled", () => {
     render(<Disabled />);
     const button = screen.getByRole("button");
 
@@ -65,5 +81,15 @@ describe("Button", () => {
     // ? In this case we want to check the exact node ordering
     // eslint-disable-next-line testing-library/no-node-access
     expect(button.lastChild).toBe(icon);
+  });
+
+  it("renders as link", () => {
+    render(<AsLink />);
+    const buttonAsLink = screen.getByRole("link", {
+      name: PRIMARY_BUTTON_TEXT,
+    });
+
+    expect(buttonAsLink).toBeInTheDocument();
+    expect(buttonAsLink).toHaveAttribute("href", LINK);
   });
 });

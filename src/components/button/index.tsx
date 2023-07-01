@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, forwardRef } from "react";
+import { ReactNode, forwardRef, ElementType } from "react";
 import { LucideIcon, LucideProps } from "lucide-react";
 import {
   Wrapper,
@@ -9,7 +9,7 @@ import {
   TextWrapper,
 } from "./style";
 
-type Props = ComponentPropsWithRef<"button"> & {
+type Props = {
   variant?: Variant;
   size?: Size;
   fillContainer?: boolean;
@@ -17,8 +17,17 @@ type Props = ComponentPropsWithRef<"button"> & {
   iconPosition?: "LEFT" | "RIGHT";
 };
 
-const Button = forwardRef<HTMLButtonElement, Props>(
-  (
+type ButtonProps<C extends ElementType> = PolymorphicComponentPropWithRef<
+  C,
+  Props
+>;
+
+type ButtonComponent = <C extends ElementType = "button">(
+  props: ButtonProps<C>
+) => ReactNode;
+
+const Button: ButtonComponent = forwardRef(
+  <C extends ElementType = "button">(
     {
       size = "LARGE",
       variant = "PRIMARY",
@@ -27,8 +36,8 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       icon: Icon,
       iconPosition = "RIGHT",
       ...props
-    },
-    ref
+    }: ButtonProps<C>,
+    ref: PolymorphicRef<C>
   ) => {
     const iconProps: LucideProps = {
       size: ICON_SIZE,
