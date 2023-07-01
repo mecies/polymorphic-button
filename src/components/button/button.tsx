@@ -42,7 +42,8 @@ const Button: ButtonComponent = forwardRef(
     const iconProps: LucideProps = {
       size: ICON_SIZE,
       ...VARIANT_TO_ICON_PROPS_MAP[variant],
-      role: "img",
+      role: "graphics-symbol",
+      "aria-label": "decorative icon",
     };
 
     const hasIcon = !!Icon;

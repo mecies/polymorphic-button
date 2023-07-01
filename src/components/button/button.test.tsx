@@ -65,7 +65,7 @@ describe("Button", () => {
     render(<WithIconLeft />);
 
     const button = screen.getByRole("button");
-    const icon = screen.getByRole("img");
+    const icon = screen.getByRole("graphics-symbol");
 
     expect(icon).toBeInTheDocument();
 
@@ -78,7 +78,7 @@ describe("Button", () => {
     render(<WithIconRight />);
 
     const button = screen.getByRole("button");
-    const icon = screen.getByRole("img");
+    const icon = screen.getByRole("graphics-symbol");
 
     expect(icon).toBeInTheDocument();
 
