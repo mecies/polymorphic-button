@@ -22,7 +22,7 @@ const {
 } = composeStories(stories);
 
 describe("Button", () => {
-  it("renders with a ref handle", () => {
+  it("renders correctly with a ref handle", () => {
     const ref = createRef<HTMLButtonElement>();
 
     render(<Button ref={ref} />);
@@ -30,16 +30,18 @@ describe("Button", () => {
     expect(ref.current).toBeInstanceOf(HTMLButtonElement);
   });
 
-  it("renders correctly in primary variant", () => {
-    render(<Primary />);
+  it("renders correctly in primary variant", async () => {
+    const { container } = render(<Primary />);
 
     expect(screen.getByText(PRIMARY_BUTTON_TEXT)).toBeInTheDocument();
+    expect(await axe(container)).toHaveNoViolations();
   });
 
-  it("renders correctly in secondary variant", () => {
-    render(<Secondary />);
+  it("renders correctly in secondary variant", async () => {
+    const { container } = render(<Secondary />);
 
     expect(screen.getByText(SECONDARY_BUTTON_TEXT)).toBeInTheDocument();
+    expect(await axe(container)).toHaveNoViolations();
   });
 
   it("renders correctly in small variant", () => {
@@ -48,20 +50,15 @@ describe("Button", () => {
     expect(screen.getByText(PRIMARY_BUTTON_TEXT)).toBeInTheDocument();
   });
 
-  it("renders with no accessibility violations", async () => {
-    const { container } = render(<Secondary />);
-
-    expect(await axe(container)).toHaveNoViolations();
-  });
-
-  it("renders as disabled", () => {
+  it("renders correctly disabled", () => {
     render(<Disabled />);
+
     const button = screen.getByRole("button");
 
     expect(button).toBeDisabled();
   });
 
-  it("renders with icon on the left", () => {
+  it("renders correctly with icon on the left", () => {
     render(<WithIconLeft />);
 
     const button = screen.getByRole("button");
@@ -74,7 +71,7 @@ describe("Button", () => {
     expect(button.firstChild).toBe(icon);
   });
 
-  it("renders with icon on the right", () => {
+  it("renders correctly with icon on the right", () => {
     render(<WithIconRight />);
 
     const button = screen.getByRole("button");
@@ -87,8 +84,9 @@ describe("Button", () => {
     expect(button.lastChild).toBe(icon);
   });
 
-  it("renders as link", () => {
+  it("renders correctly as link", () => {
     render(<AsLink />);
+
     const buttonAsLink = screen.getByRole("link", {
       name: PRIMARY_BUTTON_TEXT,
     });
