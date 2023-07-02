@@ -5,10 +5,6 @@ import { LucideProps } from "lucide-react";
 export type Variant = "PRIMARY" | "SECONDARY";
 export type Size = "SMALL" | "LARGE";
 
-type TextWrapperProps = {
-  $hasIcon: boolean;
-};
-
 type WrapperProps = {
   $variant: Variant;
   $size: Size;
@@ -134,7 +130,7 @@ export const Wrapper = styled.button<WrapperProps>`
   ${({ $fillContainer }) => getStyleForFillContainer($fillContainer)};
 `;
 
-export const TextWrapper = styled.span<TextWrapperProps>`
+export const ChildrenWrapper = styled.span`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

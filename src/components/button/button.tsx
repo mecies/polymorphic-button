@@ -6,7 +6,7 @@ import {
   Size,
   VARIANT_TO_ICON_PROPS_MAP,
   ICON_SIZE,
-  TextWrapper,
+  ChildrenWrapper,
 } from "./button.style";
 import {
   PolymorphicComponentPropWithRef,
@@ -80,7 +80,7 @@ export const Button: ButtonComponent = forwardRef(
         {...props}
       >
         {iconPosition === "LEFT" && hasIcon && <Icon {...iconProps} />}
-        <TextWrapper $hasIcon={hasIcon}>{children}</TextWrapper>
+        <ChildrenWrapper>{children}</ChildrenWrapper>
         {iconPosition === "RIGHT" && hasIcon && <Icon {...iconProps} />}
       </Wrapper>
     );
