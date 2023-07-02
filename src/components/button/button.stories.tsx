@@ -126,6 +126,13 @@ export const Truncated: Story = {
       defaultViewport: "mobile1",
     },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ width: "290px" }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const AsLink: Story = {
