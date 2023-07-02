@@ -46,6 +46,9 @@ const Button: ButtonComponent = forwardRef(
       "aria-label": "decorative icon",
     };
 
+    const buttonProps =
+      props.as === "button" ? { type: "button" as const } : {};
+
     const hasIcon = !!Icon;
 
     return (
@@ -54,6 +57,7 @@ const Button: ButtonComponent = forwardRef(
         $size={size}
         $variant={variant}
         $fillContainer={fillContainer}
+        {...buttonProps}
         {...props}
       >
         {iconPosition === "LEFT" && hasIcon && <Icon {...iconProps} />}

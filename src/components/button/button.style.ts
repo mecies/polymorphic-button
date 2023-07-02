@@ -16,7 +16,6 @@ type WrapperProps = {
 };
 
 export const ICON_SIZE = 20;
-export const GAP_SIZE = 16;
 
 export const VARIANT_TO_ICON_PROPS_MAP: Record<Variant, LucideProps> = {
   PRIMARY: {
@@ -83,6 +82,10 @@ function getStyleForFillContainer(fillContainer: boolean) {
       width: 100%;
     `;
   }
+
+  return css`
+    width: fit-content;
+  `;
 }
 
 function getStyleForDisabled(disabled: boolean) {
@@ -102,7 +105,7 @@ export const Wrapper = styled.button<WrapperProps>`
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  gap: ${GAP_SIZE}px;
+  gap: 16px;
   max-width: 100%;
 
   font-family: Nunito Sans;
@@ -120,6 +123,11 @@ export const Wrapper = styled.button<WrapperProps>`
     outline-offset: 2px;
   }
 
+  /* Make sure the icon is not shrunk when the text is truncated */
+  svg {
+    min-width: ${ICON_SIZE}px;
+  }
+
   ${({ disabled }) => getStyleForDisabled(!!disabled)};
   ${({ $variant }) => getStyleForVariant($variant)};
   ${({ $size }) => getStyleForSize($size)};
@@ -130,8 +138,5 @@ export const TextWrapper = styled.span<TextWrapperProps>`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-
-  max-width: calc(
-    100% - ${({ $hasIcon }) => ($hasIcon ? ICON_SIZE + GAP_SIZE : 0)}px
-  );
+  max-width: 100%;
 `;
