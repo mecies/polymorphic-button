@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Plus, Forward } from "lucide-react";
 
-import Button from "./button";
+import { Button } from "./button";
 
 const ICONS = {
   Plus,
@@ -12,24 +12,16 @@ const ICONS = {
 const meta: Meta<typeof Button> = {
   title: "Button",
   component: Button,
+  tags: ["autodocs"],
   argTypes: {
+    ref: {
+      table: {
+        disable: true,
+      },
+    },
     children: {
       control: "text",
-      description: "The button's text.",
-    },
-    variant: {
-      control: "radio",
-      options: ["PRIMARY", "SECONDARY"],
-      description: "Controls the button's appearance.",
-    },
-    size: {
-      control: "radio",
-      options: ["LARGE", "SMALL"],
-      description: "Controls the button's size.",
-    },
-    fillContainer: {
-      control: "boolean",
-      description: "Controls whether the button fills its container.",
+      description: "The button's content.",
     },
     onClick: {
       action: "clicked",
@@ -43,18 +35,12 @@ const meta: Meta<typeof Button> = {
       },
       description: "Controls the button's icon.",
     },
-    iconPosition: {
-      control: "radio",
-      options: ["LEFT", "RIGHT"],
-      description: "Controls the button's icon position.",
-    },
     as: {
       control: "radio",
       options: ["button", "a"],
       description: "Controls the button's underlying element.",
     },
   },
-  tags: ["autodocs"],
 };
 
 export default meta;

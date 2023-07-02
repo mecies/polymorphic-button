@@ -5,7 +5,7 @@ import { axe } from "jest-axe";
 
 import * as stories from "./button.stories";
 
-import Button from "./button";
+import { Button } from "./button";
 
 const {
   Primary,

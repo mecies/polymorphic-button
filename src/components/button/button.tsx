@@ -8,12 +8,31 @@ import {
   ICON_SIZE,
   TextWrapper,
 } from "./button.style";
+import {
+  PolymorphicComponentPropWithRef,
+  PolymorphicRef,
+} from "@/types/polymorphic";
 
 type Props = {
+  /**
+   *  Controls the button's appearance.
+   */
   variant?: Variant;
+  /**
+   *  Controls the button's size.
+   */
   size?: Size;
+  /**
+   * Controls whether the button should fill its container.
+   * */
   fillContainer?: boolean;
+  /**
+   * Controls the button's icon.
+   * */
   icon?: LucideIcon;
+  /**
+   * Controls the button's icon position.
+   * */
   iconPosition?: "LEFT" | "RIGHT";
 };
 
@@ -26,7 +45,7 @@ type ButtonComponent = <C extends ElementType = "button">(
   props: ButtonProps<C>
 ) => ReactNode;
 
-const Button: ButtonComponent = forwardRef(
+export const Button: ButtonComponent = forwardRef(
   <C extends ElementType = "button">(
     {
       size = "LARGE",
@@ -67,5 +86,3 @@ const Button: ButtonComponent = forwardRef(
     );
   }
 );
-
-export default Button;
