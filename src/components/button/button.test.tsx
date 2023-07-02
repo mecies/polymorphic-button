@@ -4,11 +4,7 @@ import { render, screen } from "@testing-library/react";
 import { axe } from "jest-axe";
 
 import * as stories from "./button.stories";
-import {
-  LINK,
-  PRIMARY_BUTTON_TEXT,
-  SECONDARY_BUTTON_TEXT,
-} from "./button.data";
+
 import Button from "./button";
 
 const {
@@ -33,21 +29,21 @@ describe("Button", () => {
   it("renders correctly in primary variant", async () => {
     const { container } = render(<Primary />);
 
-    expect(screen.getByText(PRIMARY_BUTTON_TEXT)).toBeInTheDocument();
+    expect(screen.getByText("Wesprzyj")).toBeInTheDocument();
     expect(await axe(container)).toHaveNoViolations();
   });
 
   it("renders correctly in secondary variant", async () => {
     const { container } = render(<Secondary />);
 
-    expect(screen.getByText(SECONDARY_BUTTON_TEXT)).toBeInTheDocument();
+    expect(screen.getByText("Udostępnij")).toBeInTheDocument();
     expect(await axe(container)).toHaveNoViolations();
   });
 
   it("renders correctly in small variant", () => {
     render(<Small />);
 
-    expect(screen.getByText(PRIMARY_BUTTON_TEXT)).toBeInTheDocument();
+    expect(screen.getByText("Wesprzyj")).toBeInTheDocument();
   });
 
   it("renders correctly disabled", () => {
@@ -88,10 +84,10 @@ describe("Button", () => {
     render(<AsLink />);
 
     const buttonAsLink = screen.getByRole("link", {
-      name: PRIMARY_BUTTON_TEXT,
+      name: "Wesprzyj",
     });
 
     expect(buttonAsLink).toBeInTheDocument();
-    expect(buttonAsLink).toHaveAttribute("href", LINK);
+    expect(buttonAsLink).toHaveAttribute("href", "https://www.google.com");
   });
 });

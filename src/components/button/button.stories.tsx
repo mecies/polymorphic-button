@@ -2,12 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Plus, Forward } from "lucide-react";
 
 import Button from "./button";
-import {
-  OVERFLOWING_TEXT,
-  PRIMARY_BUTTON_TEXT,
-  SECONDARY_BUTTON_TEXT,
-  LINK,
-} from "./button.data";
 
 const ICONS = {
   Plus,
@@ -69,7 +63,7 @@ type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
   args: {
-    children: PRIMARY_BUTTON_TEXT,
+    children: "Wesprzyj",
     size: "LARGE",
     variant: "PRIMARY",
     fillContainer: false,
@@ -80,7 +74,7 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     ...Primary.args,
-    children: SECONDARY_BUTTON_TEXT,
+    children: "Udostępnij",
     variant: "SECONDARY",
   },
 };
@@ -124,7 +118,8 @@ export const Disabled: Story = {
 export const Truncated: Story = {
   args: {
     ...Primary.args,
-    children: OVERFLOWING_TEXT,
+    children:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae.",
   },
   parameters: {
     viewport: {
@@ -137,7 +132,7 @@ export const AsLink: Story = {
   args: {
     ...Primary.args,
     as: "a",
-    href: LINK,
+    href: "https://www.google.com",
     target: "_blank",
   },
 };

@@ -108,6 +108,9 @@ export const Wrapper = styled.button<WrapperProps>`
   font-family: Nunito Sans;
   font-style: normal;
   font-weight: 700;
+  font-feature-settings: "liga" 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-decoration: none;
 
   transition: background-color 0.1s ease, border-color 0.1s ease;
